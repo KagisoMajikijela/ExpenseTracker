@@ -1,1 +1,43 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Expense tracker App</title>
+</head>
+<body>
+    <section class="main-container">
+        <div class="content-container">
+            <h1 class="title">Expense tracker app</h1>
+            <label for="name">Name</label>
+            <input type="text" name="name" id="txt-name" >
+            <br>
+            <label for="price">Price</label>
+            <input type="text" name="price"id="txt-price">
+            <br>
+            <label for="description">Description</label>
+            <textarea name="description" id="txt-description"></textarea>
+            <br>
+          <div class="interact-controls">
+             <button id="btn-add-expense" onclick="">Add Expense</button>
+            <select name="Filter" id="filter-cmb">
+                <option value="price">Price</option>
+                <option value="name">A-Z</option>
+                 <option value="name">Z-A</option>
+                <option value="date">Date</option>
+            </select>
+          </div>
+        </div>
+         
+    </section>
+    <div class="display">
+                <h1>Expenses</h1>
+                <ul class="items">
+                    <li>Example 1</li>
+                </ul>
+            </div>
+    
+</body>
+<script src="main.js" defer></script>
+</html>
