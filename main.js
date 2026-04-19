@@ -41,3 +41,4 @@ function addexpense(){
         console.log(Divtotal)
     }
 
+//I need to fix the total Div section to automatically pickup expense amounts and add them to total amount h2
