@@ -13,22 +13,20 @@ function GetInput(){
     expenses.push({name:txtname,price:txtprice,description:txtdescription})
     // console.log(expenses)
     display()
-    getTotals()
+    // getTotals()
 }
 //functon to display expenses inside the array of objects
 function display(){
+  const ul=document.querySelector('.items')
+  ul.textContent=""
+  console.log(ul)
   expenses.forEach((el)=>{
-        const Divdisplay =document.querySelector('.display')
-        const Ulitems=document.querySelector(".items")
-        //losing the list point
-        const Newli=document.createElement('li')
-       //Adding elements to the document()32
-        Ulitems.append(Newli)
-        // console.log(Divdisplay)
-        console.log(Ulitems)
-        console.log(Newli)
+       const newli=document.createElement('li')
+       newli.textContent=(`Expense name: ${el.name} 
+                           Expense price: ${el.price}
+                           Expense description:${el.description}`)
+       ul.append(newli)
   })
-  
 }
 //function to calculate total later after fixing element display 
 function getTotals(){
