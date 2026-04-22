@@ -12,13 +12,13 @@
             <h1 class="title">Expense tracker app</h1>
             <label for="name">Name</label>
             <input type="text" name="name" id="txt-name" >
-            <br>
+                <br>
             <label for="price">Price</label>
             <input type="text" name="price"id="txt-price">
-            <br>
+                <br>
             <label for="description">Description</label>
-            <textarea name="description" id="txt-description"></textarea>
-            <br>
+            <textarea name="description" id="txt-description" placeholder="Description here..."></textarea>
+                <br>
           <div class="interact-controls">
              <button id="btn-add-expense" onclick="">Add Expense</button>
             <select name="Filter" id="cmb-filter">
@@ -34,12 +34,13 @@
         <div class="display">
             <h1>Expenses</h1>
             <ul class="items">
-                <li>Example 1</li>
             </ul>
+        
+        <div class="calc-container">
+            <h2 class="h2-total">Total:R0</h2>
         </div>
-    <div class="calc-container">
-        <h2 class="h2-total">Total:R0</h2>
-    </div>
+        </div>
+    
 </body>
 <script src="main.js" defer></script>
 <script src="test.js" defer></script>
