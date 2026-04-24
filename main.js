@@ -4,53 +4,49 @@ btnaddexpense.addEventListener('click',GetInput)
 
 let expenses=[];
 
-let Total=0
 //function to get and update the Total
  function getTotal(){
-    const amount=expenses.forEach(el=>{
-        Total+el.price 
-        return Total
+    let totalamount=0
+    expenses.forEach(el=>{ 
+            totalamount+=el.price
+            return totalamount 
     })
-    console.log(amount)
-    console.log(Total)
 
-    return Total
+    const h2total=document.querySelector('.h2-total')
+    console.log(h2total)
+    h2total.textContent=`Total: R${totalamount}`
+    return totalamount
 }
-
 
 //function to get the user inputs
 function GetInput(){
     //getting user inputs
     const txtname=document.getElementById('txt-name').value
-    const txtprice=document.getElementById('txt-price').value
+    const txtprice=Number(document.getElementById('txt-price').value)
     const txtdescription=document.getElementById('txt-description').value
     const cmbfilter=document.getElementById('cmb-filter')
-    Total=txtprice
+    //reserting Calprit=>>>
+    // Total=txtprice
 
     //array to store User inputs
-    expenses.push({name:txtname,price:Number(txtprice),description:txtdescription})
-
-    // console.log(expenses)
-
+    expenses.push({name:txtname,price:txtprice,description:txtdescription})
     //Calling outer funtions
     display()
     getTotal()
 }
-
 
 //functon to display expenses inside the array of objects
 function display(){
   const ul=document.querySelector('.items')
   //Clear dataDuplication when rendering to the UI
   ul.textContent=""
-  console.log(ul)
+  //looping through each element to display
   expenses.forEach((el)=>{
        const newli=document.createElement('li');
        newli.classList.add('list-style')
-        // newli.style.borderBottom="1.5px solid black";
-       newli.textContent=(`Expense name: ${el.name} 
-                           Expense price:R${el.price}
-                           Expense description:${el.description}`)
+       newli.textContent=(`Expense Name: ${el.name} 
+                           Expense Price:R${el.price}
+                           Expense Description:${el.description}`)
        ul.append(newli)
   })
 }
