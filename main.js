@@ -13,7 +13,7 @@ let expenses=[];
     })
 
     const h2total=document.querySelector('.h2-total')
-    console.log(h2total)
+    // console.log(h2total)
     h2total.textContent=`Total: R${totalamount}`
     return totalamount
 }
@@ -24,15 +24,40 @@ function GetInput(){
     const txtname=document.getElementById('txt-name').value
     const txtprice=Number(document.getElementById('txt-price').value)
     const txtdescription=document.getElementById('txt-description').value
-    const cmbfilter=document.getElementById('cmb-filter')
-    //reserting Calprit=>>>
-    // Total=txtprice
+    const cmbfilter=document.getElementById('cmb-filter').value
 
     //array to store User inputs
-    expenses.push({name:txtname,price:txtprice,description:txtdescription})
+    expenses.push({name:txtname,price:txtprice,description:txtdescription,category:cmbfilter})
+    console.log(expenses)
     //Calling outer funtions
-    display()
+    display()  
     getTotal()
+    FilterByCategory()
+}
+
+//funtion to filter based of category of expense
+function FilterByCategory(){
+  expenses.forEach(el=>{
+    if(el.category==='filter'){
+      display()
+      console.log(expenses) 
+      }
+    else if(el.category==='food'){
+      expenses.filter(category=>category==='food')
+      alert('correct data used')
+      // console.log(expenses)  
+      }
+    else if(el.category==='transport'){
+      expenses.filter(category=>category==='transport')
+      }
+    else if(el.category==='needs'){
+      expenses.filter(category=>category==='needs')
+      }
+    else if(el.category==='savings'){
+      expenses.filter(category=>category==='savings')
+      }
+    }
+        )
 }
 
 //functon to display expenses inside the array of objects
