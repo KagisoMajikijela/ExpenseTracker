@@ -3,7 +3,6 @@ const btnaddexpense=document.getElementById('btn-add-expense')
 btnaddexpense.addEventListener('click',GetInput)
 
 let expenses=[];
-
 //function to get and update the Total
  function getTotal(){
     let totalamount=0
@@ -26,7 +25,7 @@ function GetInput(){
     const txtdescription=document.getElementById('txt-description').value
     const cmbfilter=document.getElementById('cmb-filter').value
 
-    //array to store User inputs
+    //array to store User input
     expenses.push({name:txtname,price:txtprice,description:txtdescription,category:cmbfilter})
     console.log(expenses)
     //Calling outer funtions
@@ -34,30 +33,56 @@ function GetInput(){
     getTotal()
     FilterByCategory()
 }
-
+//Test data
+const testarr=[
+  {name:"txtname",price:213,description:"description eg",category:"savings"},
+  {name:"txtname",price:526,description:"description eg",category:"savings"},
+  {name:"txtname",price:567823,description:"description eg",category:"food"},
+  {name:"txtname",price:53678,description:"description eg",category:"transport"},
+  {name:"txtname",price:563,description:"description eg",category:"needs"},
+  {name:"txtname",price:56362,description:"description eg",category:"filter"},
+  {name:"txtname",price:20983,description:"description eg",category:"savings"},
+]
 //funtion to filter based of category of expense
+//bug in the filter feature
 function FilterByCategory(){
-  expenses.forEach(el=>{
-    if(el.category==='filter'){
+  const Newli=document.createElement('li')
+              Newli.classList.add('list-style')
+  const Ul=document.querySelector('.items')
+
+  for(i=0;i<expenses.length;i++)
+    if(expenses[i].category==='filter'){
       display()
-      console.log(expenses) 
-      }
-    else if(el.category==='food'){
-      expenses.filter(category=>category==='food')
-      alert('correct data used')
-      // console.log(expenses)  
-      }
-    else if(el.category==='transport'){
-      expenses.filter(category=>category==='transport')
-      }
-    else if(el.category==='needs'){
-      expenses.filter(category=>category==='needs')
-      }
-    else if(el.category==='savings'){
-      expenses.filter(category=>category==='savings')
-      }
     }
-        )
+    else if(expenses[i].category==='savings'){
+      Ul.textContent=''
+      const savings=expenses.filter(el=>el.category==='savings')
+      Newli.append(savings)
+      Ul.append(Newli)
+      console.log(`savings${JSON.stringify(Ul)}`)
+    }
+    else if(expenses[i].category==='food'){
+      Ul.textContent=''
+      const food=expenses.filter(el=>el.category==='food')
+      Newli.append(food)
+      Ul.append(Newli)
+      console.log(`food${JSON.stringify(Ul)}`)
+    }
+    else if(expenses[i].category==='needs'){
+      Ul.textContent=''
+      const needs=expenses.filter(el=>el.category==='needs')
+      Newli.append(needs)
+      Ul.append(Newli)
+      console.log(`needs${JSON.stringify(Ul)}`)
+    }
+    else if(expenses[i].category==='transport'){
+      Ul.textContent=''
+      const transport=expenses.filter(el=>el.category==='transport')
+      Newli.append(transport)
+      Ul.append(Newli)
+      console.log(`transport${JSON.stringify(Ul)}`)
+    }
+  console.log(testarr.filter(el=>el.category==='savings'))
 }
 
 //functon to display expenses inside the array of objects
