@@ -1,7 +1,8 @@
 
 const btnaddexpense=document.getElementById('btn-add-expense')
 btnaddexpense.addEventListener('click',GetInput)
-
+ const btntest=document.getElementById('test')
+ btntest.addEventListener('click',FilterByCategory)
 let expenses=[];
 //function to get and update the Total
  function getTotal(){
@@ -31,7 +32,7 @@ function GetInput(){
     //Calling outer funtions
     display()  
     getTotal()
-    FilterByCategory()
+   //FilterByCategory()
 }
 //Test data
 const testarr=[
@@ -82,7 +83,7 @@ function FilterByCategory(){
       Ul.append(Newli)
       console.log(`transport${JSON.stringify(Ul)}`)
     }
-  console.log(testarr.filter(el=>el.category==='savings'))
+  //console.log(testarr.filter(el=>el.category==='savings'))
 }
 
 //functon to display expenses inside the array of objects
@@ -100,4 +101,3 @@ function display(){
        ul.append(newli)
   })
 }
-
