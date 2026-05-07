@@ -58,9 +58,10 @@ function FilterByCategory(){
     else if(expenses[i].category==='savings'){
       Ul.textContent=''
       const savings=expenses.filter(el=>el.category==='savings')
-      Newli.append(JSON.stringify(savings))
+      //considering removing the arrow function to filter and pass a full function on the filter method!
+      Newli.append(JSON.stringify(`Name:${expenses.name} Price:${expenses.price} Description:${expenses.category}`))
       Ul.append(Newli)
-      // console.log(`savings${JSON.stringify(Ul)}`)
+      console.log(`savings${JSON.stringify(savings)}`)
     }
     else if(expenses[i].category==='food'){
       Ul.textContent=''
