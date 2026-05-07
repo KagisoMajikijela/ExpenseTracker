@@ -58,30 +58,30 @@ function FilterByCategory(){
     else if(expenses[i].category==='savings'){
       Ul.textContent=''
       const savings=expenses.filter(el=>el.category==='savings')
-      Newli.append(savings)
+      Newli.append(JSON.stringify(savings))
       Ul.append(Newli)
-      console.log(`savings${JSON.stringify(Ul)}`)
+      // console.log(`savings${JSON.stringify(Ul)}`)
     }
     else if(expenses[i].category==='food'){
       Ul.textContent=''
       const food=expenses.filter(el=>el.category==='food')
-      Newli.append(food)
+      Newli.append(JSON.stringify(food))
       Ul.append(Newli)
-      console.log(`food${JSON.stringify(Ul)}`)
+      // console.log(`food${JSON.stringify(Ul)}`)
     }
     else if(expenses[i].category==='needs'){
       Ul.textContent=''
       const needs=expenses.filter(el=>el.category==='needs')
-      Newli.append(needs)
+      Newli.append(JSON.stringify(needs))
       Ul.append(Newli)
-      console.log(`needs${JSON.stringify(Ul)}`)
+      // console.log(`needs${JSON.stringify(Ul)}`)
     }
     else if(expenses[i].category==='transport'){
       Ul.textContent=''
       const transport=expenses.filter(el=>el.category==='transport')
-      Newli.append(transport)
+      Newli.append(JSON.stringify(transport))
       Ul.append(Newli)
-      console.log(`transport${JSON.stringify(Ul)}`)
+      // console.log(`transport${JSON.stringify(Ul)}`)
     }
   //console.log(testarr.filter(el=>el.category==='savings'))
 }
