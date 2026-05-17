@@ -1,6 +1,6 @@
 
 const btnaddexpense=document.getElementById('btn-add-expense')
-btnaddexpense.addEventListener('click',GetInput)
+  btnaddexpense.addEventListener('click',GetInput)
  const btntest=document.getElementById('test')
  btntest.addEventListener('click',FilterByCategory)
 let expenses=[];
@@ -52,7 +52,7 @@ function FilterByCategory(){
   const Ul=document.querySelector('.items')
 
   for(i=0;i<expenses.length;i++)
-    if(expenses[i].category==='filter'){
+    if(expenses[i].category=='filter'){
       display()
     }
     else if(expenses[i].category==='savings'){
@@ -62,29 +62,40 @@ function FilterByCategory(){
       Newli.append(JSON.stringify(`Name:${expenses.name} Price:${expenses.price} Description:${expenses.category}`))
       Ul.append(Newli)
       console.log(`savings${JSON.stringify(savings)}`)
+      console.log(savings)
     }
-    else if(expenses[i].category==='food'){
+    else if(expenses[i].category=='food'){
       Ul.textContent=''
-      const food=expenses.filter(el=>el.category==='food')
+      const food=expenses.filter(el=>el.category=='food')
       Newli.append(JSON.stringify(food))
       Ul.append(Newli)
+      console.log(food)
       // console.log(`food${JSON.stringify(Ul)}`)
     }
-    else if(expenses[i].category==='needs'){
+    else if(expenses[i].category=='needs'){
       Ul.textContent=''
-      const needs=expenses.filter(el=>el.category==='needs')
+      const needs=expenses.filter(el=>el.category=='needs')
       Newli.append(JSON.stringify(needs))
       Ul.append(Newli)
+      console.log(needs)
       // console.log(`needs${JSON.stringify(Ul)}`)
     }
-    else if(expenses[i].category==='transport'){
+    else if(expenses[i].category=='transport'){
       Ul.textContent=''
-      const transport=expenses.filter(el=>el.category==='transport')
+      const transport=expenses.filter(el=>el.category=='transport')
       Newli.append(JSON.stringify(transport))
       Ul.append(Newli)
+      console.log(transport)
       // console.log(`transport${JSON.stringify(Ul)}`)
     }
   //console.log(testarr.filter(el=>el.category==='savings'))
+}
+//Testing filter function 
+function filterNeeeds(needs){
+  return needs.filter(el=>{
+    el.category=='needs'
+    console.log(needs)
+  })
 }
 
 //functon to display expenses inside the array of objects
