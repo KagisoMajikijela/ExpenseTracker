@@ -18,32 +18,30 @@ let expenses=[];
 
 //function to get the user inputs
 function GetInput(){
-    //getting user inputs
+ //getting user inputs
     const txtname=document.getElementById('txt-name').value
-    const txtprice=parseInt(document.getElementById('txt-price').value)
+    const txtprice=Number(document.getElementById('txt-price').value)
     const txtdescription=document.getElementById('txt-description').value
     const cmbfilter=document.getElementById('cmb-filter').value
 
     //array to store User input
     expenses.push({name:txtname,price:txtprice,description:txtdescription,category:cmbfilter})
-    //function to clear fileds working data recieved
-    function ClearFields(name,price,description){
-      console.log(name,price,description)
-    }
-    //Calling outer funtions
 
-    ClearFields(txtname,txtprice,txtdescription)
+    //Calling outer funtions
     display(expenses)  
     getTotal()
+    //returning this value to get the dropdown list value outside the function
    return cmbfilter
+ 
 }
+
 
 //funtion to filter based of category of expense
 function FilterByCategory(){
-    const arrdata=expenses.filter(el=>el.category==`${GetInput()}`)
-    console.log(arrdata)
-
-  return  display(arrdata)
+  const FilterVal=document.getElementById('cmb-filter').value
+  //will fix tomorrow simple 
+  expenses.filter(el=>{el.category==FilterVal})
+  console.log(expenses.filter(el=>{el.category==FilterVal}))
 }
 
 //functon to display expenses inside the array of objects
@@ -60,4 +58,5 @@ function display(dt){
                            Expense Description:${el.description}`)
        ul.append(newli)
   })
+  console.log(dt)
 }
