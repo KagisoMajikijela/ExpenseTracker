@@ -7,20 +7,21 @@
     <title>Expense tracker App</title>
 </head>
 <body>
+    <form action="#">
     <section class="main-container">
         <div class="content-container">
             <h1 class="title">Expense tracker app</h1>
             <label for="name">Name</label>
-            <input type="text" name="name" id="txt-name" >
+            <input type="text" name="name" id="txt-name" placeholder="Eg: John">
                 <br>
             <label for="price">Price</label>
-            <input type="text" name="price"id="txt-price">
+            <input type="text" name="price"id="txt-price" placeholder="00.00">
                 <br>
             <label for="description">Description</label>
             <input  name="description" id="txt-description" placeholder="Description here..." ></input>
                 <br>
           <div class="interact-controls">
-             <button id="btn-add-expense" onclick="">Add Expense</button>
+             <button id="btn-add-expense" >Add Expense</button>
             <select name="Filter" id="cmb-filter" onclick="FilterByCategory()">
                 <option value="filter">Filter</option>
                 <option value="food">Food</option>
@@ -30,8 +31,8 @@
             </select>
           </div>
         </div>
-         
     </section>
+    </form>
         <div class="display">
             <h1>Expenses</h1>
             <ul class="items">

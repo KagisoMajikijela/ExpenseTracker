@@ -9,10 +9,9 @@ let expenses=[];
     let totalamount=0
     expenses.forEach(el=>{ 
             totalamount+=el.price
-            return totalamount 
     })
     const h2total=document.querySelector('.h2-total')
-    h2total.textContent=`Total: R${totalamount}`
+    h2total.textContent=`Total: R${totalamount.toFixed(2)}`
     return totalamount
 }
 
@@ -20,28 +19,43 @@ let expenses=[];
 function GetInput(){
  //getting user inputs
     const txtname=document.getElementById('txt-name').value
-    const txtprice=Number(document.getElementById('txt-price').value)
+    const txtprice=Math.round(Number(document.getElementById('txt-price').value))
     const txtdescription=document.getElementById('txt-description').value
     const cmbfilter=document.getElementById('cmb-filter').value
 
+    if(!txtname){
+      document.getElementById('txt-name').focus()
+      alert('Name field should have a value')
+    }else if(!txtprice||typeof txtprice=='string'){
+      alert('Price Value should have a number value')
+      document.getElementById('txt-price').focus()
+    }else if(!txtdescription){
+      alert('Description should have a value')
+      document.getElementById('txt-description').focus()
+    }
+    else{
     //array to store User input
-    expenses.push({name:txtname,price:txtprice,description:txtdescription,category:cmbfilter})
-
+        expenses.push({name:txtname,price:txtprice,description:txtdescription,category:cmbfilter})  
+        console.log('success!')  
     //Calling outer funtions
-    display(expenses)  
-    getTotal()
-    //returning this value to get the dropdown list value outside the function
-   return cmbfilter
- 
+        ClearInputsfields()
+        display(expenses) 
+        getTotal()
+    }
+   
+  
+   
 }
-
 
 //funtion to filter based of category of expense
 function FilterByCategory(){
   const FilterVal=document.getElementById('cmb-filter').value
-  //will fix tomorrow simple 
-  expenses.filter(el=>{el.category==FilterVal})
-  console.log(expenses.filter(el=>{el.category==FilterVal}))
+  if(FilterVal=='filter'){
+    display(expenses)
+  }
+  else{
+  const filterdData=expenses.filter(el=>el.category==FilterVal)
+  display(filterdData)}
 }
 
 //functon to display expenses inside the array of objects
@@ -53,10 +67,17 @@ function display(dt){
   dt.forEach((el)=>{
        const newli=document.createElement('li');
        newli.classList.add('list-style')
-       newli.textContent=(`Expense Name: ${el.name} 
-                           Expense Price:R${el.price}
+       newli.textContent=(`Name: ${el.name}
+                           Price:R${el.price}
                            Expense Description:${el.description}`)
        ul.append(newli)
   })
   console.log(dt)
+}
+
+//funtion to clear inputs 
+function ClearInputsfields (){
+  const name=document.getElementById('txt-name').value=''
+  const price=document.getElementById('txt-price').value=''
+  const description=document.getElementById('txt-description').value=''
 }
