@@ -1,7 +1,6 @@
-
 const btnaddexpense=document.getElementById('btn-add-expense')
             btnaddexpense.addEventListener('click',GetInput)
- //Empty ary for data 
+ //Empty array to store data 
 let expenses=[];
 
 //function to get and update the Total
@@ -17,15 +16,16 @@ let expenses=[];
 
 //function to get the user inputs
 function GetInput(){
- //getting user inputs
+  try{
+    //getting user inputs
     const txtname=document.getElementById('txt-name').value
     const txtprice=Math.round(Number(document.getElementById('txt-price').value))
     const txtdescription=document.getElementById('txt-description').value
     const cmbfilter=document.getElementById('cmb-filter').value
 
     if(!txtname){
+      
       document.getElementById('txt-name').focus()
-      alert('Name field should have a value')
     }else if(!txtprice||typeof txtprice=='string'){
       alert('Price Value should have a number value')
       document.getElementById('txt-price').focus()
@@ -38,13 +38,13 @@ function GetInput(){
         expenses.push({name:txtname,price:txtprice,description:txtdescription,category:cmbfilter})  
         console.log('success!')  
     //Calling outer funtions
-        ClearInputsfields()
-        display(expenses) 
         getTotal()
+        display(expenses) 
+        ClearInputsfields()
     }
-   
-  
-   
+  }catch(error){
+    alert(error)
+  }
 }
 
 //funtion to filter based of category of expense
@@ -55,7 +55,8 @@ function FilterByCategory(){
   }
   else{
   const filterdData=expenses.filter(el=>el.category==FilterVal)
-  display(filterdData)}
+  display(filterdData)
+  }
 }
 
 //functon to display expenses inside the array of objects
