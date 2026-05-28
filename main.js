@@ -1,5 +1,7 @@
 const btnaddexpense=document.getElementById('btn-add-expense')
             btnaddexpense.addEventListener('click',GetInput)
+const OKbtn=document.getElementById('popup-btn-ok')
+OKbtn.addEventListener('click',ErrorPopUp)
  //Empty array to store data 
 let expenses=[];
 
@@ -11,7 +13,6 @@ let expenses=[];
     })
     const h2total=document.querySelector('.h2-total')
     h2total.textContent=`Total: R${totalamount.toFixed(2)}`
-    return totalamount
 }
 
 //function to get the user inputs
@@ -24,13 +25,13 @@ function GetInput(){
     const cmbfilter=document.getElementById('cmb-filter').value
 
     if(!txtname){
-      
+      ErrorPopUp()
       document.getElementById('txt-name').focus()
     }else if(!txtprice||typeof txtprice=='string'){
-      alert('Price Value should have a number value')
+      ErrorPopUp
       document.getElementById('txt-price').focus()
     }else if(!txtdescription){
-      alert('Description should have a value')
+      ErrorPopUp
       document.getElementById('txt-description').focus()
     }
     else{
@@ -81,4 +82,13 @@ function ClearInputsfields (){
   const name=document.getElementById('txt-name').value=''
   const price=document.getElementById('txt-price').value=''
   const description=document.getElementById('txt-description').value=''
+}
+
+function ErrorPopUp(){
+  const popupalert=document.querySelector('.popup-container').style.display='flex'
+  const maincontainer=document.querySelector('.main-container').style.opacity=10
+  
+  OKbtn.addEventListener('click',()=>{
+    const x =document.querySelector('.popup-container').style.display='none'
+  })
 }

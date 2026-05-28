@@ -2,3 +2,8 @@
 2.display the data inside the array in when user clicks the buuton to add items 
 3.filter the array data based on the combobox value, and use the same display fucntion to display acordingly
 4.DONE
+
+Error Msg
+if UI input is empty show the alert div Msg
+when user clicks ok button remove the popup error div 
+can i use 1 function that cahnges this state? in orderto sahe the function on click and Rendering?
